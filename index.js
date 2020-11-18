@@ -956,9 +956,9 @@ class VideoPlayer extends React.Component {
                             </Animated.View >
                             :
                             null}
-                        {showOpenVip && this.props.VIPCONTS
-                            &&
-                            <ShouldPermissionTitle openViptipBOTTOM={bottomContsBottom + 40} />}
+                       {(showOpenVip && this.props.VIPCONTS) ?
+                            this.props?.showNoVipView() : null
+                        }
                         {//控件隐藏时候，最下面显示的进度
                             this.state.showConts ? null :
                                 <BottomSpeed

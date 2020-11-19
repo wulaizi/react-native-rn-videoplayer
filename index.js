@@ -683,6 +683,11 @@ class VideoPlayer extends React.Component {
     rePlay = (autoPlay = true, admRePlay = true) => {
         this.adminPaused = true;
 
+        //禁止播放
+        if (this.props?.stopPlay) {
+            this.props.stopPlayCallBack && this.props.stopPlayCallBack()
+            return false
+        }
         //admRePlay//重置当前播放时间
 
         const GSTATE = { admRePlay: admRePlay, showChangeList: false }

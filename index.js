@@ -961,9 +961,6 @@ class VideoPlayer extends React.Component {
                             </Animated.View >
                             :
                             null}
-                       {(showOpenVip && this.props.VIPCONTS) ?
-                            this.props?.showNoVipView() : null
-                        }
                         {//控件隐藏时候，最下面显示的进度
                             this.state.showConts ? null :
                                 <BottomSpeed
@@ -992,7 +989,7 @@ class VideoPlayer extends React.Component {
                         }
 
                         {
-                            this.state.showConts ?
+                             (this.state.showConts&&!showOpenVip && !this.props.VIPCONTS) ?
                                 <Animated.View
                                     style={{ width: this.state.width, bottom: bottomContsBottom, opacity: this.state.opacity, zIndex: 99999, position: "absolute", }}>
                                     <View style={{ flexDirection: "row", flexWrap: "nowrap" }}>
@@ -1134,6 +1131,8 @@ class VideoPlayer extends React.Component {
                                 :
                                 null
                         }
+                          {(showOpenVip && this.props.VIPCONTS) ?
+                            this.props?.showNoVipView() : null}
                     </View>
 
                     {
